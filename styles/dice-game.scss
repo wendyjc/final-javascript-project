@@ -1,0 +1,225 @@
+/* 
+Final Project - CSS for Dice Game
+*/
+
+$frame-border-settings: solid 1px var(--light-med-neutral);
+
+@mixin rounded-container($background-color, $border-radius, $border) {
+    background-color: $background-color;
+    border-radius: $border-radius;
+    border: $border;
+}
+
+#game-frame {
+    @include rounded-container(var(--brighter1), 10px, $frame-border-settings);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 749px;
+    padding: 10px 10px 20px 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#game-frame > button:first-of-type {
+    margin-top: 10px;
+}
+#players-frame{
+    margin: 5px 15px 5px 15px;
+    display: flex;
+    flex-direction: row;
+
+}
+#player-container, #opponent-container {
+    min-width: 185px;
+    max-width: 100%;
+    text-align: center;
+    margin: 10px;
+    @include rounded-container(white, 10px, $frame-border-settings);
+    img {
+        max-height: 125px;
+    }
+    h3 {
+        font-size: 1.3em;
+        margin: 20px;
+    }
+    p {
+        margin-top: 2px;
+        margin-bottom: 8px;
+    }
+    p:last-of-type {
+        margin-bottom: 15px;
+    }
+}
+
+#player-dice-container, #opponent-dice-container {
+    min-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin: 0px 5px;
+   
+    @include rounded-container(var(--darkest-neutral), 5px, solid 1px var(--darkest-neutral));
+
+    img {
+        margin: 0px 5px;
+        max-width: 50px;
+    }
+
+    h3 {
+        color: white;
+        font-size: 1.1em;
+    }
+ 
+}
+
+#player-dialogue, #opponent-dialogue {
+    display: none;
+}
+
+#popup-instructions{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(150, 150, 150, 0.8);
+    z-index: 10;   
+    display: none;
+}
+
+#popup-instructions div{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 375px;
+    max-width: 600px;
+    background-color: var(--darker-hue3);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px var(--darkest-neutral);
+    padding: 10px;
+
+    h2 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    h2, h3, p {
+        color: white;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    
+}
+#close-popup {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    color: white;
+    border: solid 1px white;
+    padding: 2px;
+}
+
+#game-btn-box button, button:last-of-type {
+    padding: 4px 8px;
+    background-color: var(--darker-hue3);
+    color: white;
+    cursor: pointer;
+}
+
+#close-popup:hover, 
+#close-popup:active,
+#game-btn-box button:hover,
+#game-btn-box button:hover, 
+button:last-of-type:hover,
+button:last-of-type:active {
+    color: var(--darkest-neutral);
+    background-color: var(--light-med-neutral);
+    
+}
+
+#game-results-popup {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: rgba(150, 150, 150, 0.8);
+    z-index: -1;    
+    opacity: 0;
+}
+#game-results-popup div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 350px;
+    min-width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px var(--darkest-neutral);
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    p {
+        text-align: center;
+        font-size: 0.7em;
+    }
+    button {
+        margin-bottom: 15px;
+    }
+}
+
+
+/* 
+media queries
+*/
+
+@media screen and (min-width: 475px) {
+    #player-container, #opponent-container {
+        min-width: 195px;
+        margin: 5px 10px;
+    }
+    #popup-instructions div{
+        min-width: 400px;
+        
+    }
+}
+
+@media screen and (min-width: 550px) {
+    #player-container, #opponent-container {
+        min-width: 200px;
+    }
+    #popup-instructions div{
+        min-width: 450px;
+    }
+    #game-results-popup div {
+        p {
+            font-size: 1.0em;
+        }
+    }
+}
+
+@media screen and (min-width: 676px) {
+    #player-container, #opponent-container {
+        min-width: 230px;
+        margin: 10px 15px;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    #player-container, #opponent-container {
+        min-width: 250px;
+        
+    }
+}

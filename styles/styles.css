@@ -1,0 +1,963 @@
+@charset "UTF-8";
+/* 
+author: wendy chuang
+date: 06/28/2023
+notes: main stylesheet for COMP2132 Final Project - Dice Game
+*/
+/* 
+Final Project - CSS for Dice Game
+*/
+#game-frame {
+  background-color: var(--brighter1);
+  border-radius: 10px;
+  border: solid 1px var(--light-med-neutral);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 749px;
+  padding: 10px 10px 20px 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#game-frame > button:first-of-type {
+  margin-top: 10px;
+}
+
+#players-frame {
+  margin: 5px 15px 5px 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+#player-container, #opponent-container {
+  min-width: 185px;
+  max-width: 100%;
+  text-align: center;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;
+  border: solid 1px var(--light-med-neutral);
+}
+#player-container img, #opponent-container img {
+  max-height: 125px;
+}
+#player-container h3, #opponent-container h3 {
+  font-size: 1.3em;
+  margin: 20px;
+}
+#player-container p, #opponent-container p {
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+#player-container p:last-of-type, #opponent-container p:last-of-type {
+  margin-bottom: 15px;
+}
+
+#player-dice-container, #opponent-dice-container {
+  min-height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 5px;
+  background-color: var(--darkest-neutral);
+  border-radius: 5px;
+  border: solid 1px var(--darkest-neutral);
+}
+#player-dice-container img, #opponent-dice-container img {
+  margin: 0px 5px;
+  max-width: 50px;
+}
+#player-dice-container h3, #opponent-dice-container h3 {
+  color: white;
+  font-size: 1.1em;
+}
+
+#player-dialogue, #opponent-dialogue {
+  display: none;
+}
+
+#popup-instructions {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(150, 150, 150, 0.8);
+  z-index: 10;
+  display: none;
+}
+
+#popup-instructions div {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 375px;
+  max-width: 600px;
+  background-color: var(--darker-hue3);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px var(--darkest-neutral);
+  padding: 10px;
+}
+#popup-instructions div h2 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+#popup-instructions div h2, #popup-instructions div h3, #popup-instructions div p {
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#close-popup {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  color: white;
+  border: solid 1px white;
+  padding: 2px;
+}
+
+#game-btn-box button, button:last-of-type {
+  padding: 4px 8px;
+  background-color: var(--darker-hue3);
+  color: white;
+  cursor: pointer;
+}
+
+#close-popup:hover,
+#close-popup:active,
+#game-btn-box button:hover,
+#game-btn-box button:hover,
+button:last-of-type:hover,
+button:last-of-type:active {
+  color: var(--darkest-neutral);
+  background-color: var(--light-med-neutral);
+}
+
+#game-results-popup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(150, 150, 150, 0.8);
+  z-index: -1;
+  opacity: 0;
+}
+
+#game-results-popup div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 350px;
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px var(--darkest-neutral);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#game-results-popup div img {
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+#game-results-popup div p {
+  text-align: center;
+  font-size: 0.7em;
+}
+#game-results-popup div button {
+  margin-bottom: 15px;
+}
+
+/* 
+media queries
+*/
+@media screen and (min-width: 475px) {
+  #player-container, #opponent-container {
+    min-width: 195px;
+    margin: 5px 10px;
+  }
+  #popup-instructions div {
+    min-width: 400px;
+  }
+}
+@media screen and (min-width: 550px) {
+  #player-container, #opponent-container {
+    min-width: 200px;
+  }
+  #popup-instructions div {
+    min-width: 450px;
+  }
+  #game-results-popup div p {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 676px) {
+  #player-container, #opponent-container {
+    min-width: 230px;
+    margin: 10px 15px;
+  }
+}
+@media screen and (min-width: 750px) {
+  #player-container, #opponent-container {
+    min-width: 250px;
+  }
+}
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+     -moz-appearance: button;
+          appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/* -------- Variables -------- */
+:root {
+  --lightest-neutral: #f5f4f4;
+  --light-neutral: #e8e8e8;
+  --light-off-color:#e5dcd2;
+  --light-med-neutral: #aaaaaa;
+  --med-neutral: #545454;
+  --dark-neutral: #343434;
+  --darkest-neutral: #292929;
+  --lightestbright: #aaf6f6;
+  --lighterbright: #7ae6e6;
+  --brighter1:#c3b8f9;
+  --brighter2: #2fd1d1;
+  --brighter3: #1ee196;
+  --bright2: #1ecbe1;
+  --med-hue1: #1e6ae1;
+  --darker-hue2: #203fae;
+  --darker-hue3: #23a1a1;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+HTML element selectors
+*/
+html {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+}
+
+body {
+  margin: 0px;
+  background-color: black;
+  color: var(--dark-neutral);
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom left;
+}
+
+header {
+  background-color: var(--darkest-neutral);
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+}
+
+header img, footer img {
+  width: 40px;
+  height: auto;
+  margin: 0px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: var(--darker-hue2);
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+h1 {
+  font-size: 1.35em;
+  text-transform: uppercase;
+  padding-right: 0px;
+  padding-left: 5px;
+  text-align: center;
+  line-height: 40px;
+}
+
+div h1 a {
+  color: white;
+}
+
+img ~ h2 {
+  margin-top: 0px;
+}
+
+p {
+  padding-left: 25px;
+  padding-right: 25px;
+  color: var(--dark-neutral);
+}
+
+main {
+  padding-top: 20px;
+  flex: 1;
+}
+
+button {
+  font-weight: bold;
+  background-color: var(--lightestbright);
+  border-radius: 3px;
+}
+
+main > h2 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  text-align: center;
+}
+
+a, a:visited, a[href^="#"], a[href^="../"] {
+  font-weight: bold;
+  color: var(--darker-hue3);
+  text-decoration: none;
+}
+
+a[href^=http]:hover, a[href^=http]:focus,
+a[href^=mail]:hover, a[href^=mail]:focus,
+a[href^="#"]:hover, a[href^="#"]:focus {
+  text-decoration: underline;
+  filter: brightness(1.4);
+}
+
+a:active {
+  transform: scale(0.95);
+}
+
+a[href^=http]:active, nav a:active,
+nav a[href^="#"]:active,
+a[href^=mail]:active, a[href^="#"]:active,
+a[href^="../"]:active {
+  filter: brightness(0.7);
+}
+
+header > div > div > a:active {
+  transform: none;
+}
+
+ul {
+  list-style-type: disc;
+  color: white;
+}
+
+li {
+  margin-left: 15px;
+  padding-bottom: 5px;
+}
+
+ol {
+  list-style-type: lower-roman;
+}
+
+footer {
+  margin-top: 25px;
+  display: grid;
+  padding: 18px 0px 20px 0px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-template-areas: "footer1" "footer2" "footer3" "footer4";
+}
+
+footer div {
+  margin-bottom: 0px;
+}
+
+footer, footer h2, footer small {
+  color: var(--lightest-neutral);
+  background-color: var(--darkest-neutral);
+}
+
+footer > div img ~ h2 {
+  font-size: 1.5em;
+  color: var(--brighter2);
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+footer a {
+  color: var(--brighter2);
+  font-weight: normal;
+}
+
+footer ul {
+  list-style-type: none;
+  list-style-image: none;
+  padding-left: 15px;
+}
+
+footer li {
+  padding: 5px 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 0px;
+}
+
+img[src*=logo-med] {
+  max-width: 250px;
+}
+
+code {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+pre {
+  padding: 0px 15px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+blockquote {
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 3px;
+  background-color: var(--darker-hue3);
+  border-left: solid 10px var(--med-neutral);
+  padding: 1px;
+  font-size: 0.88em;
+}
+
+blockquote p {
+  color: var(--lightest-neutral);
+  font-weight: bold;
+}
+
+cite {
+  color: var(--lightestbright);
+  font-weight: normal;
+}
+
+pre {
+  background-color: var(--light-neutral);
+  box-shadow: 0px 0px 3px 3px lightgray;
+  padding: 5px;
+  margin: 15px 15px;
+}
+
+/* 
+.class selectors
+*/
+.badfield {
+  background-color: pink;
+  border: solid 2px red;
+}
+
+.footer1 {
+  display: flex;
+  align-items: center;
+}
+
+.footer2, .footer3 {
+  margin-bottom: 0px;
+}
+
+.footer1 {
+  grid-area: footer1;
+}
+
+.footer2 {
+  grid-area: footer2;
+}
+
+.footer3 {
+  grid-area: footer3;
+}
+
+.footer4 {
+  grid-area: footer4;
+}
+
+.fa-solid, .fa-brands {
+  padding-right: 8px;
+}
+
+.warning:before {
+  content: "⚠Warning";
+  margin: 0px 0px 0px 5px;
+}
+
+.warning {
+  font-weight: bold;
+  border: solid 1px darkred;
+  border-radius: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 8px;
+  margin-right: 3px;
+  background-color: pink;
+  max-width: 430px;
+  margin-bottom: 20px;
+  margin: auto;
+}
+
+.warning ul {
+  list-style-type: disc;
+  margin-top: 8px;
+}
+
+.warning ul li {
+  line-height: 1.3em;
+}
+
+/*
+ID selectors
+*/
+#wrapper {
+  max-width: 1024px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: var(--lightest-neutral);
+  min-height: 100vh;
+  /* overflow: auto;  prevent container collapsing on floated children */
+  /* box-shadow: 0px 0px 2px 2px lightgray; */
+}
+
+#current-page:link {
+  background-color: var(--darker-hue3);
+}
+
+/*
+media queries
+*/
+@media screen and (min-width: 380px) {
+  h1 {
+    font-size: 1.5em;
+    /* padding-left: 15px; */
+  }
+  header img, footer img {
+    width: 50px;
+    margin-left: 15px;
+  }
+  pre {
+    padding: 10px 15px;
+  }
+  blockquote {
+    padding: 5px;
+    margin-left: 35px;
+    margin-right: 40px;
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 440px) {
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.6em;
+  }
+  footer {
+    padding-left: 15px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "footer1 footer1" "footer2 footer3" "footer4 footer4";
+  }
+  footer h2 {
+    font-size: 1.5em;
+  }
+}
+@media screen and (min-width: 675px) {
+  header {
+    display: flex;
+    align-items: center;
+  }
+  header > div {
+    max-width: 45%;
+  }
+  main section article {
+    display: flex;
+    text-align: center;
+    padding: 30px;
+    align-items: center;
+  }
+  main section article div:last-of-type {
+    padding-left: 20px;
+    max-width: 70%;
+  }
+  main section article h2 {
+    font-size: 2em;
+  }
+}
+@media screen and (min-width: 750px) {
+  h1 {
+    font-size: 1.7em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  footer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "footer1 footer2 footer3" "footer4 footer4 footer4";
+  }
+  .footer4 {
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (min-width: 825px) {
+  main section article {
+    padding-left: 80px;
+    padding-right: 50px;
+  }
+  .footer1, .footer2, .footer3 {
+    padding-left: 25px;
+  }
+}
+@media screen and (min-width: 900px) {
+  pre {
+    margin-top: 25px;
+  }
+  table {
+    margin-top: 25px;
+  }
+  footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .footer1, .footer2, .footer3 {
+    padding-left: 35px;
+  }
+}
+@media screen and (min-width: 950px) {
+  footer {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .footer1 {
+    padding-left: 30px;
+  }
+  .footer1, .footer2, .footer3 {
+    padding-left: 55px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main > section > h2:first-of-type {
+    padding-top: 290px;
+  }
+}

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+    <!--
+        author: wendy chuang
+        date: 06/28/2023
+        notes: COMP2132 - Final Project - Dice Game
+    -->
+<head>
+    <meta charset="utf-8">
+    <title>COMP2132 - Final Project - Dice Game</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+    <script src="scripts/game-classes.js" defer="defer"></script>
+    <script src="scripts/final-project.js" defer="defer"></script>
+    <script src="https://kit.fontawesome.com/dcde01a3a2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+    
+        <header>
+            <div>
+                <div>
+                    <a href="index.html"><img src="images/dice-target.svg" alt="Dice Game Logo"></a>
+                    <h1><a href="index.html">Dice Game</a></h1>
+                </div>
+            </div>
+        </header>
+    
+        <main>
+        
+            <div id="game-frame">
+                <button id="btn-instructions">Instructions</button>
+                <div id="players-frame">
+                    <div id="player-container">
+                        <h3>You</h3>
+                        <div id="player-dice-container">
+                            <div id="player-dialogue"><h3></h3></div>
+                            <img id="player-die-1" src="images/dice-target.svg" alt="Dice Game Logo">
+                            <img id="player-die-2" src="images/dice-target.svg" alt="Dice Game Logo">
+                        </div>
+                        <img src="images/opponent-left.webp" alt="Left Player cartoon">
+                        <p><strong>Round score: <span id="player-round-score">0</span></strong></p>
+                        <p><strong>Total score: <span id="player-total-score">0</span></strong></p>
+
+                    </div>
+
+                    <div id="opponent-container">
+                        <h3>Opponent</h3>
+                        <div id="opponent-dice-container">
+                            <img id="opponent-die-1" src="images/dice-target.svg" alt="Dice Game Logo">
+                            <img id="opponent-die-2" src="images/dice-target.svg" alt="Dice Game Logo">
+                            <div id="opponent-dialogue"><h3></h3></div>
+                        </div>
+                        <img src="images/opponent-right.webp" alt="Right Player cartoon">
+                        <p><strong>Round score: <span id="opponent-round-score">0</span></strong></p>
+                        <p><strong>Total score: <span id="opponent-total-score">0</span></strong></p>
+
+                    </div>
+                </div>
+
+                <div id="game-btn-box">
+                    <button id="btn-new-game">New Game</button>
+                    <button id="btn-roll-dice">Roll Dice</button>
+              
+                </div>
+            </div>
+
+        </main>
+    
+        <footer>
+            <div class="footer1">
+                <img src="images/dice-target.svg" alt="Dice Game Logo">
+                <h2>Wendy Chuang</h2>
+            </div>
+            <div class="footer2">
+                <h2>Contact Me</h2>
+                <ul>
+                    <li><a href="mailto:wendyc@wendychuang.com"><i class="fa-solid fa-envelope"></i>wendy@wendyc.com</a></li>
+                    <li><i class="fa-solid fa-phone"></i>1-800-111-1111</li>
+                    <li><i class="fa-solid fa-location-dot"></i>111 Main Street<br>Vancouver, BC V1V 1V1</li>
+                </ul>
+            </div>
+            <div class="footer3">
+                <h2>Social Media</h2>
+                <ul>
+                    <li><a href="https://twitter.com/?lang=en"><i class="fa-brands fa-twitter"></i>Twitter</a></li>
+                    <li><a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
+                    <li><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer4">
+                <p><small>COMP 2132
+                </small></p>
+                <p><small>2023 Wendy Chuang</small></p>
+            </div>
+        </footer>
+
+        <aside>
+            <div id="popup-instructions" class="instructions-popup">
+                <div>
+                    <h2>Hello, Dice Game Player!</h2>
+                    <a id="close-popup">&#x2715;</a>
+                    <h3>How to Play:</h3>
+                    <ul>
+                        <li>Click 'New Game' to start a new game or reset to a new game.</li>
+                        <li>Click 'Roll Dice' to roll the dice for each round of play.</li>
+                    </ul>
+                    <h3>Game Rules:</h3>
+                    <ul>
+                        <li>There are 3 rounds of play for each game.</li>
+                        <li>The score for each round is the sum of the two dice values.</li>
+                        <li>However, if a player rolls 1 for any of their two dice, that player scores 0 for that round.</li>
+                        <li>Also, if a player rolls a pair of the same number (other than 1), the player's score doubles for that round.</li>
+                        <li>The highest cumulative total score after 3 rounds wins the game!</li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div id="game-results-popup">
+                <div>
+                    <img id="results-img" src="images/dice-target.svg" alt="Dice Game Logo">
+                    <p></p>
+                    <button id="play-again-button">Play Again</button>
+                </div>
+            </div>
+        </aside>
+    
+    </div>
+    </body>
+</html>
